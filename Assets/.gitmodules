@@ -1,0 +1,3 @@
+[submodule "Marching-Cubes-On-The-GPU"]
+	path = Marching-Cubes-On-The-GPU
+	url = https://github.com/SimLeek/Marching-Cubes-On-The-GPU.git

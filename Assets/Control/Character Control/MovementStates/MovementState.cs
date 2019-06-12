@@ -6,7 +6,7 @@ public class MovementState
 {
     public CharacterControl parent;
 
-    public double rotateSpeed = 10.0f;
+    public double rotateSpeed = 6.0f;
 
     public double anim_speed=1.5;
     public double anim_direction=0.0;

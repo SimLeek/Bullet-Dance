@@ -53,6 +53,8 @@ public class CharacterControl : MonoBehaviour
     public float skinWidth = 0.1f; //probably doesn't need to be changed 
     public LayerMask layerMask = -1; //make sure we aren't in this layer 
 
+    public float jump_force = 15000f;
+
     public void Start()
     {
         move_state = new RunningMovementState(this);
@@ -152,7 +154,7 @@ public class CharacterControl : MonoBehaviour
             return;
         }
 
-        DontGoThroughThings(player_collider, player_rb);
+        //DontGoThroughThings(player_collider, player_rb);
         //DontGoThroughThings(left_toe_collider, player_rb, delegate { right_foot_caught = true;});
         //DontGoThroughThings(right_toe_collider, player_rb, delegate { left_foot_caught = true; });
 

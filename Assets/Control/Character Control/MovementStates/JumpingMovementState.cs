@@ -18,6 +18,8 @@ public class JumpingMovementState : MovementState
         parent.anim.Play(parent.animation_is_jumping_id, -1, .1f);
         parent.anim.SetBool(parent.animation_is_idle_id, false);
         start_velocity = parent.velocity;
+;       parent.player_rb.AddForce(parent.jump_force * Vector3.up);
+
     }
 
     public override void FootGrounded()
@@ -30,20 +32,21 @@ public class JumpingMovementState : MovementState
     {
         base.Move(inp, transform);
 
-        parent.velocity = new Vector3((float)(start_velocity.x + float_speed * math.cos(inp.direction) * inp.magnitude), parent.velocity.y, (float)(start_velocity.z + float_speed * math.sin(inp.direction) * inp.magnitude));
+        parent.velocity = new Vector3((float)(start_velocity.x + float_speed * math.cos(inp.direction) * inp.magnitude), parent.player_rb.velocity.y, (float)(start_velocity.z + float_speed * math.sin(inp.direction) * inp.magnitude));
         Debug.Log($"Move()->float: {parent.velocity}");
     }
 
     public override void FixedUpdate()
     {
-        float jumpVelocity = parent.anim.GetFloat(parent.animation_jump_velocity_id);
-        parent.transform.localPosition += Vector3.Normalize(Vector3.up) * jumpVelocity * Time.fixedDeltaTime;
-        float gravityControl = parent.anim.GetFloat(parent.animation_jump_gravity_id);
-        if (gravityControl > 0)
-        {
-            parent.player_rb.useGravity = false;
-        }
-
+        //float jumpVelocity = parent.anim.GetFloat(parent.animation_jump_velocity_id);
+        //parent.transform.localPosition += Vector3.Normalize(Vector3.up) * jumpVelocity * Time.fixedDeltaTime;
+        //float gravityControl = parent.anim.GetFloat(parent.animation_jump_gravity_id);
+        //if (gravityControl > 0)
+        //{
+        //    parent.player_rb.useGravity = false;
+        //}
+        //parent.player_rb.AddForce(parent.transform.up * 3.0f);
+        //parent.player_rb.AddForce(parent.jump_velocity * Vector3.up);
         if (timer <= 0f)
         {
             parent.anim.SetBool(parent.animation_is_jumping_id, false);

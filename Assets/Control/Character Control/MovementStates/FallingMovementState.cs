@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.Mathematics;
+using System;
 
 
 public class FallingMovementState : MovementState
@@ -25,7 +25,7 @@ public class FallingMovementState : MovementState
     public override void Move(InputTransform inp, Transform transform)
     {
         base.Move(inp, transform);
-        parent.velocity = new Vector3((float)(start_velocity.x + float_speed * math.cos(inp.direction) * inp.magnitude), parent.velocity.y, (float)(start_velocity.z + float_speed * math.sin(inp.direction) * inp.magnitude));
+        parent.velocity = new Vector3((float)(start_velocity.x + float_speed * Mathf.Cos((float)inp.direction) * inp.magnitude), parent.velocity.y, (float)(start_velocity.z + float_speed * Mathf.Sin((float)inp.direction) * inp.magnitude));
         Debug.Log($"Move()->fall->float: {parent.velocity}");
     }
 

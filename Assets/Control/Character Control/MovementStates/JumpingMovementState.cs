@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.Mathematics;
+using System;
 
 public class JumpingMovementState : MovementState
 {
@@ -32,7 +32,7 @@ public class JumpingMovementState : MovementState
     {
         base.Move(inp, transform);
 
-        parent.velocity = new Vector3((float)(start_velocity.x + float_speed * math.cos(inp.direction) * inp.magnitude), parent.player_rb.velocity.y, (float)(start_velocity.z + float_speed * math.sin(inp.direction) * inp.magnitude));
+        parent.velocity = new Vector3((float)(start_velocity.x + float_speed * Mathf.Cos((float)inp.direction) * inp.magnitude), parent.player_rb.velocity.y, (float)(start_velocity.z + float_speed * Mathf.Sin((float)inp.direction) * inp.magnitude));
         Debug.Log($"Move()->float: {parent.velocity}");
     }
 
